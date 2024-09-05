@@ -9,6 +9,5 @@ google_calendar_id = "primary" #think this is the default otherwise change it to
 
 # misc
 events_ts_json_path = "./events_ts.json"
-system_tz_offset = 4
 pause = 0.1
 force = False  # force full run even if no changes

@@ -84,8 +84,8 @@ def build_gcal_event(event):
         start_end = {"start": {"date": date}, "end": {"date": date}}
     else:
         # normal events have start/end datetime/timezone
-        start = dateutil.parser.parse(str(event.start)) + dt.timedelta(hours=config.system_tz_offset)
-        end = dateutil.parser.parse(str(event.end)) + dt.timedelta(hours=config.system_tz_offset)
+        start = dateutil.parser.parse(str(event.start)) - dt.timedelta(hours=system_tz_offset)
+        end = dateutil.parser.parse(str(event.end)) - dt.timedelta(hours=system_tz_offset)
         start_end = {
             "start": {
                 "dateTime": str(start).replace(" ", "T"),
@@ -194,6 +194,9 @@ def check_ts_match(new_events):
 current_time = "{:%Y-%m-%d %H:%M:%S}".format(dt.datetime.now())
 print("Started at {}.".format(current_time))
 start_time = time.time()
+
+# get local timezone offset in hours, e.g. EDT == -4
+system_tz_offset = (time.timezone if (time.localtime().tm_isdst == 0) else time.altzone) / 60 / 60 * -1
 
 # authenticate outlook and google credentials
 outlook_calendar = outlook.outlookCal()
