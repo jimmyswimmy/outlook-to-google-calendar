@@ -48,30 +48,15 @@ class outlookCal(object):
         return self.get_events_in_range(today, today)
 
     def get_teams_link(self, appointment):
-        # a bunch of crap I haven't looked at in a while
-        meeting_type = "Meeting" if appointment.MeetingStatus in [1, 3] else "Appointment"
+        return re.search('(?<=Join the meeting now).*', appointment.Body)[0].strip()
 
-        # Access the OnlineMeeting property (which contains the Teams meeting link)
-        online_meeting = appointment.GetAssociatedAppointment(False)
-        teams_link = None
-
-        if online_meeting and hasattr(appointment, 'OnlineMeeting'):
-            try:
-                # Access the OnlineMeeting property
-                teams_link = appointment.OnlineMeeting.JoinOnlineMeetingUrl
-            except Exception as e:
-                print(f"Warning: Could not access Teams link for {appointment.Subject} due to: {str(e)}")
-
+    def todo__print__(self, appointment):
         print(f"{meeting_type}: {appointment.Subject}")
         print(f"Start: {appointment.Start}")
         print(f"End: {appointment.End}")
         print(f"Teams Link: {teams_link if teams_link else 'No Teams link found'}")
         print(f"EntryID: {appointment.EntryID}")
         print("\n")
-
-
-        # Define the start and end time for today
-        start_time = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-        end_time = start_time + timedelta(days=1)
+        return
 
 

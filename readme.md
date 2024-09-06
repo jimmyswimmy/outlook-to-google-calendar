@@ -19,9 +19,9 @@ The script connects to the local instance of Outlook using [pywin32]|(https://py
   - The script will check Outlook for calendar events and compare them to the calendar events it saved (in events_ts.json) during the previous run. **If they differ (in IDs or timestamps), it will delete all events on this Google calendar and then add all Microsoft calendar events to the Google calendar.**
 
 ## TODO
-	- ~~recognize current system time zone and take that offset out of config.py~~
-	- find teams links and put them back into the body, or make new teams links from the meeting id
-	- make recurring meetings... recurring meetings
-	- be smarter about tracking changes
-	- only update changed stuff, rather than deleting everything and recreating
-    - be smarter about time zones - if tz changes during lookahead period, adjust for it
+  - ~~recognize current system time zone and take that offset out of config.py~~
+  - find teams links and put them back into the body, or make new teams links from the meeting id
+  - make recurring meetings... recurring meetings
+  - be smarter about tracking changes
+  - only update changed stuff, rather than deleting everything and recreating
+  - be smarter about time zones - if tz changes during lookahead period, adjust for it
