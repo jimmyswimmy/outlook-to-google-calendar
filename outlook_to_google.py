@@ -71,7 +71,7 @@ def clean_body(body):
 def build_gcal_event(event):
     # construct a google calendar event from an outlook event
 
-    body = outlook.get_teams_link(event)
+    body = outlook_calendar.get_teams_link(event)
     body += '\n'
     body += clean_body(event.Body)
 
