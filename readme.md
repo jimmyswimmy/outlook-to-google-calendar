@@ -20,7 +20,8 @@ The script connects to the local instance of Outlook using [pywin32]|(https://py
 
 ## TODO
   - ~~recognize current system time zone and take that offset out of config.py~~
-  - find teams links and put them back into the body, or make new teams links from the meeting id
+  - ~~find teams links and put them back into the body, or make new teams links from the meeting id~~
+  - ~~add flag to skip meetings on weekends because i'm not going to those~~
   - make recurring meetings... recurring meetings
   - be smarter about tracking changes
   - only update changed stuff, rather than deleting everything and recreating

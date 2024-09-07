@@ -152,6 +152,12 @@ def add_google_events(se, events):
     start_time = time.time()
 
     for event in events:
+        # check if skip_weekends is set in config
+        if config.skip_weekends:
+            # if it's a weekend, weekday will be 5 or 6
+            if event.start.weekday() >= 5:
+                # then skip this event
+                continue
         e = build_gcal_event(event)
         result = se.insert(calendarId=config.google_calendar_id, body=e).execute()
         assert isinstance(result, dict)
