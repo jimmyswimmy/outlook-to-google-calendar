@@ -48,7 +48,11 @@ class outlookCal(object):
         return self.get_events_in_range(today, today)
 
     def get_teams_link(self, appointment):
-        return re.search('(?<=Join the meeting now).*', appointment.Body)[0].strip()
+        try:
+            link = re.search('(?<=Join the meeting now).*', appointment.Body)[0].strip()
+            return link
+        except:
+            return ""
 
     def todo__print__(self, appointment):
         print(f"{meeting_type}: {appointment.Subject}")
