@@ -47,7 +47,7 @@ def get_outlook_events(outlook_calendar):
 
     start = dt.datetime.today() - dt.timedelta(days=config.previous_days)
     end = dt.datetime.today() + dt.timedelta(days=config.future_days)
-    events = outlook_calendar.get_events_in_range(start, end)
+    events = outlook_calendar.get_all_events_in_range(start, end)
 
     elapsed_time = time.time() - start_time
     print("Retrieved {} events from Outlook in {:.1f} secs.".format(len(events), elapsed_time))
